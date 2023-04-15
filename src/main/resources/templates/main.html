@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Записи к врачу</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" href="../static/styles.css">
+</head>
+<body>
+<div class="header">
+    <div class="header-content flex row-flex">
+        <img src="https://github.com/TimurSA/PikPo_4lab/blob/master/images/logo.png?raw=true" alt="" class="logo">
+        <div class="text">Записи к врачу</div>
+    </div>
+</div>
+<div class="body">
+    <div class="body-content flex column-flex">
+        <form class="form flex column-flex" action="/mvc/v1/form" th:action="@{/mvc/v1/form}" method="post" th:object="${modelRequest}">
+            <input type="number" placeholder="СНИЛС" class="input-text" th:field="*{id}">
+            <input type="submit" title="Отправить" class="input-submit">
+        </form>
+    </div>
+</div>
+<div class="description">
+    <div class="description-content flex column-flex">
+        <div class="social flex row-flex">
+            <img src="https://raw.githubusercontent.com/TimurSA/PikPo_4lab/master/images/vk_logo.png" alt="" class="vk-image">
+            <a href="#" class="link">Мокшанцев Д. А.</a>
+        </div>
+        <div class="social flex row-flex">
+            <img src="https://raw.githubusercontent.com/TimurSA/PikPo_4lab/master/images/vk_logo.png" alt="" class="vk-image">
+            <a href="#" class="link">Сайранов Т. Ф.</a>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

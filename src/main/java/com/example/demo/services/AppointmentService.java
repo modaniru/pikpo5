@@ -1,8 +1,8 @@
 package com.example.demo.services;
 
-import com.example.demo.model.Appointment;
-import com.example.demo.model.Patient;
-import com.example.demo.repos.AppointmentRepository;
+import com.example.demo.model.dao.Appointment;
+import com.example.demo.model.dao.Patient;
+import com.example.demo.repository.AppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

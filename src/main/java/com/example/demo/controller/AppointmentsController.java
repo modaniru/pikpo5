@@ -1,10 +1,11 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Appointment;
-import com.example.demo.model.ModelRequest;
-import com.example.demo.model.Patient;
+import com.example.demo.model.dao.Appointment;
+import com.example.demo.model.dto.ModelRequest;
+import com.example.demo.model.dao.Patient;
 import com.example.demo.services.AppointmentService;
 import com.example.demo.services.PatientService;
+import com.example.demo.utils.Constraints;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,28 +16,27 @@ import java.util.Objects;
 
 @Controller
 @RequestMapping("/mvc/v1/")
-public class MainController {
+public class AppointmentsController {
     @Autowired
     private AppointmentService appointmentService;
     @Autowired
     private PatientService patientService;
 
-
     @GetMapping("/form")
     public String test(Model model){
         model.addAttribute("modelRequest", new ModelRequest());
-        return "main.html";
+        return Constraints.MAIN;
     }
 
-    @PostMapping("/form")
+    @GetMapping("/appointments")
     public String getAppointments(@ModelAttribute ModelRequest modelRequest, Model model){
-        if(modelRequest.getId() == null) return "main.html";
+        if(modelRequest.getId() == null) return Constraints.MAIN;
         Patient patientById = patientService.getPatientById(modelRequest.getId());
-        if(Objects.isNull(patientById)) return "main.html";
+        if(Objects.isNull(patientById)) return Constraints.MAIN;
         List<Appointment> allByPatient = appointmentService.findAllByPatient(patientById);
         model.addAttribute("modelRequest", new ModelRequest());
         model.addAttribute("patient", patientById);
         model.addAttribute("appointments", allByPatient);
-        return "appointments.html";
+        return Constraints.APPOINTMENTS;
     }
 }

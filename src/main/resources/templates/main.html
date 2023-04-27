@@ -17,7 +17,7 @@
 </div>
 <div class="body">
     <div class="body-content flex column-flex">
-        <form class="form flex column-flex" action="/mvc/v1/form" th:action="@{/mvc/v1/form}" method="post" th:object="${modelRequest}">
+        <form class="form flex column-flex" action="/mvc/v1/appointments" th:action="@{/mvc/v1/appointments}" method="get" th:object="${modelRequest}">
             <input type="number" placeholder="СНИЛС" class="input-text" th:field="*{id}">
             <input type="submit" title="Отправить" class="input-submit">
         </form>

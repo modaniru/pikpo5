@@ -31,7 +31,12 @@ public class AppointmentsController {
 
     @GetMapping("/appointments")
     public String getAppointments(@ModelAttribute ModelRequest modelRequest, Model model){
-        if(modelRequest.getId() == null) return Constraints.MAIN;
+        if(modelRequest.getId() == null) {
+            List<Appointment> allByPatient = appointmentService.findAll();
+            model.addAttribute("modelRequest", new ModelRequest());
+            model.addAttribute("appointments", allByPatient);
+            return Constraints.APPOINTMENTS;
+        }
         Patient patientById = patientService.getPatientById(modelRequest.getId());
         if(Objects.isNull(patientById)) return Constraints.MAIN;
         List<Appointment> allByPatient = appointmentService.findAllByPatient(patientById);

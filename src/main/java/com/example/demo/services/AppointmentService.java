@@ -20,4 +20,8 @@ public class AppointmentService {
     public List<Appointment> findAllByPatient(Patient patient){
         return appointmentRepository.findAllByPatient(patient);
     }
+
+    public List<Appointment> findAll() {
+        return appointmentRepository.findAll();
+    }
 }

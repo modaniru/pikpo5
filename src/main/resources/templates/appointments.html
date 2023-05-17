@@ -21,7 +21,6 @@
       <input type="submit" title="Отправить" class="input-submit">
     </form>
     <div class="appointments flex column-flex">
-      <p th:text="${patient.firstname + ' ' + patient.lastname}"/>
       <div class="appointment" th:each="appointment: ${appointments}">
         <div class="doctor" th:text="${appointment.doctor.specialization}"></div>
         <div class="app-info flex column-flex">
